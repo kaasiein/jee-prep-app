@@ -1,6 +1,8 @@
 # JEE Prep — Exam System
 ### by Urani Software
 
+Link to the App: https://jee-prep-app-1.onrender.com/
+
 A real, runnable React app implementing the JEE Prep UI/UX design document:
 global navigation, chapter selection, Syllabus, Documentation, and four
 practice categories — all four now question-based:
