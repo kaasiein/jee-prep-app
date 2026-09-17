@@ -14,39 +14,13 @@ export default function App() {
   const [view, setView] = useState("home"); // home | syllabus | documentation | practice
   const [category, setCategory] = useState(2); // 1-4, only used when view === "practice"
   const [chapterId, setChapterId] = useState(chapters[0].id);
-  const [totalViews, setTotalViews] = useState(null);
   const [showAuth, setShowAuth] = useState(false);
   const [user, setUser] = useState(null);
 
   // Restore a logged-in session (if any) on load.
   useEffect(() => {
     const saved = window.localStorage.getItem(SESSION_KEY);
-    if (saved) setUser({ username: saved });
-  }, []);
-
-  // Real, persistent page-view counter. GET /api/views hits our own backend
-  // (server/index.js), which increments a number stored in
-  // server/data/views.txt on disk and returns the new total. Because the
-  // count lives in a real file this server controls, it's a genuine
-  // cumulative count across every visitor, not a random or simulated one.
-  // If the backend isn't running, the badge just hides itself rather than
-  // showing a stale or fake number — see UtilityBar's `totalViews !== null`.
-  useEffect(() => {
-    let cancelled = false;
-    fetch("/api/views")
-      .then((res) => {
-        if (!res.ok) throw new Error("Views request failed");
-        return res.json();
-      })
-      .then((data) => {
-        if (!cancelled && typeof data.count === "number") setTotalViews(data.count);
-      })
-      .catch(() => {
-        // Backend not running or unreachable — leave totalViews as null.
-      });
-    return () => {
-      cancelled = true;
-    };
+    if (saved) setUser({ email: saved });
   }, []);
 
   function goPractice(cat) {
@@ -54,9 +28,9 @@ export default function App() {
     setView("practice");
   }
 
-  function handleAuthSuccess(username) {
-    setUser({ username });
-    window.localStorage.setItem(SESSION_KEY, username);
+  function handleAuthSuccess(email) {
+    setUser({ email });
+    window.localStorage.setItem(SESSION_KEY, email);
     setShowAuth(false);
   }
 
@@ -72,7 +46,6 @@ export default function App() {
       <UtilityBar
         view={view}
         setView={setView}
-        totalViews={totalViews}
         user={user}
         onOpenAuth={() => setShowAuth(true)}
         onLogout={handleLogout}

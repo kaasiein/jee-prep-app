@@ -1,10 +1,10 @@
 import React from "react";
-import { Home, BookOpen, FileText, Search, User, ChevronDown, Eye } from "lucide-react";
+import { Home, BookOpen, FileText, Search, User, ChevronDown } from "lucide-react";
 import { C } from "../theme.js";
 import { Pill, PrimaryButton } from "./UI.jsx";
 import { chapters } from "../data/chapters.js";
 
-export function UtilityBar({ view, setView, totalViews, user, onOpenAuth, onLogout }) {
+export function UtilityBar({ view, setView, user, onOpenAuth, onLogout }) {
   const NavLink = ({ id, label, icon: Icon }) => (
     <button
       onClick={() => setView(id)}
@@ -45,17 +45,11 @@ export function UtilityBar({ view, setView, totalViews, user, onOpenAuth, onLogo
           </div>
         </div>
         <div className="flex items-center gap-5">
-          {totalViews !== null && (
-            <div className="flex items-center gap-1.5" style={{ fontSize: 13, color: C.textMuted }}>
-              <Eye size={14} />
-              {totalViews.toLocaleString()} page views
-            </div>
-          )}
           <Search size={17} color={C.textMuted} style={{ cursor: "pointer" }} />
           {user ? (
             <div className="flex items-center gap-2.5">
               <span className="flex items-center gap-1.5" style={{ fontSize: 13, fontWeight: 600, color: C.text }}>
-                <User size={15} /> {user.username}
+                <User size={15} /> {user.email}
               </span>
               <button
                 onClick={onLogout}
@@ -81,7 +75,7 @@ export function UtilityBar({ view, setView, totalViews, user, onOpenAuth, onLogo
 
 export function AuthModal({ onClose, onAuthSuccess }) {
   const [mode, setMode] = React.useState("login"); // "login" | "signup"
-  const [username, setUsername] = React.useState("");
+  const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [error, setError] = React.useState("");
   const [loading, setLoading] = React.useState(false);
@@ -94,14 +88,14 @@ export function AuthModal({ onClose, onAuthSuccess }) {
       const res = await fetch(`/api/${mode === "login" ? "login" : "signup"}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username: username.trim(), password }),
+        body: JSON.stringify({ email: email.trim(), password }),
       });
       const data = await res.json();
       if (!res.ok) {
         setError(data.error || "Something went wrong. Please try again.");
         return;
       }
-      onAuthSuccess(data.username);
+      onAuthSuccess(data.email);
     } catch (err) {
       setError("Couldn't reach the server. Is the backend running (npm run server)?");
     } finally {
@@ -149,12 +143,13 @@ export function AuthModal({ onClose, onAuthSuccess }) {
         </div>
 
         <form onSubmit={submit}>
-          <label style={{ fontSize: 12.5, fontWeight: 600, color: C.textMuted }}>Username</label>
+          <label style={{ fontSize: 12.5, fontWeight: 600, color: C.textMuted }}>Email</label>
           <input
             style={inputStyle}
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="e.g. kasi_r"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="you@example.com"
             autoFocus
             required
           />
@@ -262,6 +257,12 @@ export function Footer() {
     <div style={{ borderTop: `1px solid ${C.border}`, marginTop: 40, padding: "20px 24px", textAlign: "center" }}>
       <p style={{ fontSize: 12.5, color: C.textMuted, margin: 0 }}>
         JEE Prep — a product by <strong style={{ color: C.text }}>Urani Software</strong>
+      </p>
+      <p style={{ fontSize: 12, color: C.textMuted, marginTop: 6 }}>
+        Have feedback?{" "}
+        <a href="mailto:kasi47@gmail.com" style={{ color: C.primary, fontWeight: 600, textDecoration: "none" }}>
+          kasi47@gmail.com
+        </a>
       </p>
     </div>
   );
