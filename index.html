@@ -1,12 +1,293 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JEE Prep by Urani Software</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- ===================== SEO ===================== -->
+<title>JEE Prep by Urani Software — Free JEE Main Physics Practice & Previous-Year Questions</title>
+<meta name="description" content="Practice JEE Main Physics chapter-by-chapter with Key Concept Questions, Complete Concept Questions and real previous-year JEE Main questions. Free, instant feedback, no ads." />
+<meta name="keywords" content="JEE Main physics practice, JEE Main previous year questions, JEE Main mock test free, Units and Measurements JEE questions, JEE Main preparation online" />
+<link rel="canonical" href="https://REPLACE-WITH-YOUR-DOMAIN.com/" />
+
+<!-- Open Graph / social sharing -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="JEE Prep by Urani Software — Free JEE Main Physics Practice" />
+<meta property="og:description" content="Chapter-by-chapter JEE Main Physics practice: key concepts, deeper concept questions, and real previous-year questions with instant, explained feedback." />
+<meta property="og:url" content="https://REPLACE-WITH-YOUR-DOMAIN.com/" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<!-- Structured data so Google understands what this page/app is -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "JEE Prep by Urani Software",
+  "url": "https://REPLACE-WITH-YOUR-DOMAIN.com/",
+  "description": "Free online JEE Main practice platform with chapter-wise physics questions and instant feedback.",
+  "sameAs": []
+}
+</script>
+
+<style>
+  :root{
+    --ink:#17223B;
+    --ink-soft:#3C4A66;
+    --paper:#F4F5F2;
+    --paper-line:#D9DCD4;
+    --rule:#C8CCC2;
+    --blue:#1F4E79;
+    --blue-deep:#153A5C;
+    --stamp:#B5792B;
+    --pass:#2E6B3E;
+    --pass-bg:#E7F0E5;
+    --red:#A23B32;
+    --serif:'Source Serif 4','Iowan Old Style','Georgia',serif;
+    --sans:'Inter',-apple-system,'Segoe UI',sans-serif;
+  }
+  @media (prefers-reduced-motion: reduce){ *{animation:none!important;transition:none!important;} }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.55;
+  }
+  img,svg{max-width:100%;}
+  a{color:var(--blue);}
+  h1,h2,h3{font-family:var(--serif); color:var(--ink); margin:0 0 .4em; font-weight:600;}
+  section{padding:72px 24px;}
+  .wrap{max-width:920px; margin:0 auto;}
+  .rule{border:none; border-top:1px solid var(--rule); margin:0;}
+
+  /* ---------- Top admit-card style strip ---------- */
+  .paperhead{
+    border-bottom:2px solid var(--ink);
+    background:linear-gradient(180deg,#fff, var(--paper) 140%);
+  }
+  .paperhead-inner{
+    max-width:920px; margin:0 auto; padding:18px 24px 0;
+    display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:8px;
+  }
+  .brandmark{display:flex; align-items:center; gap:10px;}
+  .brandmark .box{width:34px;height:34px;border:2px solid var(--ink); display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;font-size:18px;}
+  .brandmark .name{font-family:var(--serif); font-weight:700; font-size:18px;}
+  .brandmark .by{font-size:12px; color:var(--ink-soft);}
+  .examfields{display:flex; gap:22px; font-size:12.5px; color:var(--ink-soft); padding-bottom:6px;}
+  .examfields b{color:var(--ink); font-weight:600;}
+
+  /* ---------- Hero ---------- */
+  .hero{padding:56px 24px 40px;}
+  .hero-grid{max-width:920px;margin:0 auto;display:grid;grid-template-columns:1.15fr 1fr;gap:48px;align-items:center;}
+  @media (max-width:820px){.hero-grid{grid-template-columns:1fr;}}
+  .hero h1{font-size:clamp(30px,4.4vw,46px); line-height:1.12; letter-spacing:-.01em;}
+  .hero p.lede{font-size:17px; color:var(--ink-soft); max-width:46ch; margin:16px 0 26px;}
+  .cta-row{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    display:inline-block; padding:13px 22px; font-weight:600; font-size:15px;
+    border-radius:3px; text-decoration:none; border:2px solid var(--ink); cursor:pointer;
+  }
+  .btn-primary{background:var(--ink); color:#fff;}
+  .btn-primary:hover{background:var(--blue-deep); border-color:var(--blue-deep);}
+  .btn-ghost{background:transparent; color:var(--ink);}
+  .btn-ghost:hover{background:#fff;}
+
+  /* Sample question card — the real hero visual, drawn from actual product content */
+  .qcard{
+    background:#fff; border:1.5px solid var(--ink); border-radius:4px; padding:20px 22px;
+    box-shadow:6px 6px 0 var(--paper-line);
+  }
+  .qcard .tag{font-size:11.5px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.06em; margin-bottom:10px;}
+  .qcard .qtext{font-size:15px; font-weight:600; margin-bottom:14px;}
+  .opt{border:1px solid var(--rule); border-radius:3px; padding:9px 12px; font-size:14px; margin-bottom:8px; display:flex; gap:10px; align-items:flex-start;}
+  .opt.correct{background:var(--pass-bg); border-color:var(--pass); color:#1c3d24;}
+  .opt .why{display:block; font-size:12.5px; color:var(--ink-soft); margin-top:3px; font-weight:400;}
+  .opt input{margin-top:3px;}
+
+  /* ---------- Section headers, exam-style ---------- */
+  .sec-label{font-family:var(--serif); font-size:13px; letter-spacing:.02em; color:var(--stamp); margin-bottom:6px;}
+  .sec-title{font-size:26px;}
+  .sec-lede{color:var(--ink-soft); max-width:62ch; margin-bottom:34px;}
+
+  /* ---------- Four categories, as an exam sections table ---------- */
+  .catlist{border-top:2px solid var(--ink);}
+  .catrow{display:grid; grid-template-columns:56px 1fr 1.4fr; gap:18px; padding:20px 0; border-bottom:1px solid var(--rule); align-items:start;}
+  .catrow .num{font-family:var(--serif); font-size:26px; color:var(--stamp);}
+  .catrow h3{font-size:17px; margin-bottom:4px;}
+  .catrow p{margin:0; color:var(--ink-soft); font-size:14.5px;}
+  .catrow .badge{display:inline-block; font-size:11px; background:#fff; border:1px solid var(--rule); padding:2px 8px; border-radius:3px; color:var(--ink-soft); margin-left:8px;}
+  @media (max-width:600px){.catrow{grid-template-columns:36px 1fr;} .catrow>div:last-child{grid-column:1/-1;}}
+
+  /* ---------- How to use — a genuine numbered sequence ---------- */
+  .steps{counter-reset:step; border-top:2px solid var(--ink);}
+  .step{display:grid; grid-template-columns:64px 1fr; gap:18px; padding:22px 0; border-bottom:1px solid var(--rule);}
+  .step .stepnum{font-family:var(--serif); font-size:22px; color:var(--ink); border:1.5px solid var(--ink); width:44px;height:44px;border-radius:50%; display:flex;align-items:center;justify-content:center;}
+  .step h3{font-size:16.5px; margin-bottom:4px;}
+  .step p{margin:0; color:var(--ink-soft); font-size:14.5px; max-width:60ch;}
+
+  /* ---------- FAQ ---------- */
+  details{border-bottom:1px solid var(--rule); padding:16px 0;}
+  summary{cursor:pointer; font-weight:600; font-size:15.5px; list-style:none; display:flex; justify-content:space-between; align-items:center;}
+  summary::-webkit-details-marker{display:none;}
+  summary:after{content:'+'; font-family:var(--serif); font-size:22px; color:var(--stamp);}
+  details[open] summary:after{content:'–';}
+  details p{color:var(--ink-soft); margin:10px 0 0; font-size:14.5px; max-width:64ch;}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--ink); color:#E9EAE6; padding:40px 24px;}
+  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:16px; align-items:center;}
+  footer a{color:#fff;}
+  footer .fine{color:#9AA3B5; font-size:12.5px;}
+</style>
+</head>
+<body>
+
+  <div class="paperhead">
+    <div class="paperhead-inner">
+      <div class="brandmark">
+        <div class="box">J</div>
+        <div>
+          <div class="name">JEE Prep</div>
+          <div class="by">by Urani Software</div>
+        </div>
+      </div>
+      <div class="examfields">
+        <span><b>Exam:</b> JEE Main</span>
+        <span><b>Subject:</b> Physics</span>
+        <span><b>Cost:</b> Free</span>
+      </div>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="hero-grid">
+      <div>
+        <h1>Practice JEE Main physics the way you'll actually be tested.</h1>
+        <p class="lede">Chapter by chapter, question by question — with the right answer's explanation and every wrong answer's reason, shuffled fresh on every attempt so you're never just memorizing option positions.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="/code.html">
+      
+            Start practicing — free</a>
+          <a class="btn btn-ghost" href="#how-to-use">How it works</a>
+        </div>
+      </div>
+      <div class="qcard">
+        <div class="tag">Unit 1 · Significant Figures</div>
+        <div class="qtext">Multiply 4.52 (3 sig. figs.) by 2.4 (2 sig. figs.). Express the result correctly.</div>
+        <div class="opt"><span>○</span><span>10.848</span></div>
+        <div class="opt"><span>○</span><span>10.8</span></div>
+        <div class="opt correct"><span>✓</span><span>11<span class="why">Correct — matches the 2 significant figures allowed by the least precise input.</span></span></div>
+        <div class="opt"><span>○</span><span>10.85</span></div>
+      </div>
+    </div>
+  </header>
+
+  <section id="what">
+    <div class="wrap">
+      <div class="sec-label">About</div>
+      <h2 class="sec-title">What JEE Prep actually is</h2>
+      <p class="sec-lede">A free, no-clutter practice site built chapter by chapter for JEE Main Physics. Every question comes with a written reason for each wrong option, not just the right one — so a wrong guess still teaches you something. Built and maintained by Urani Software.</p>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <section id="categories">
+    <div class="wrap">
+      <div class="sec-label">Sections</div>
+      <h2 class="sec-title">Four ways to practice each chapter</h2>
+      <div class="catlist">
+        <div class="catrow">
+          <div class="num">01</div>
+          <div><h3>Key Concept Questions <span class="badge">quick</span></h3></div>
+          <p>Short, one-fact-at-a-time questions for fast revision the night before an exam.</p>
+        </div>
+        <div class="catrow">
+          <div class="num">02</div>
+          <div><h3>Complete Concept Questions</h3></div>
+          <p>Deeper questions that test how ideas connect — not just whether you remember a formula.</p>
+        </div>
+        <div class="catrow">
+          <div class="num">03</div>
+          <div><h3>Real JEE Questions</h3></div>
+          <p>Full exam-style problems modeled on real JEE Main previous-year papers, at real exam difficulty.</p>
+        </div>
+        <div class="catrow">
+          <div class="num">04</div>
+          <div><h3>Ask &amp; Answer <span class="badge">coming soon</span></h3></div>
+          <p>Speak or type your answer to a question and get evaluated the way an oral exam would.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <section id="how-to-use">
+    <div class="wrap">
+      <div class="sec-label">Instructions</div>
+      <h2 class="sec-title">How to use the practice app</h2>
+      <p class="sec-lede">Five steps, start to finish.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="stepnum">1</div>
+          <div><h3>Create a free account</h3><p>Sign up with your email from the "Log in" button in the top right. No payment, no card details.</p></div>
+        </div>
+        <div class="step">
+          <div class="stepnum">2</div>
+          <div><h3>Pick your chapter</h3><p>Use the subject dropdown to choose a Physics chapter. Unit 1 (Units and Measurements) is fully loaded with questions today; more chapters are being added.</p></div>
+        </div>
+        <div class="step">
+          <div class="stepnum">3</div>
+          <div><h3>Choose a category</h3><p>Start with Key Concept Questions if you're short on time, or go straight to Real JEE Questions if you want full exam difficulty.</p></div>
+        </div>
+        <div class="step">
+          <div class="stepnum">4</div>
+          <div><h3>Answer, section by section</h3><p>Each chapter is split into sections that unlock in order — finish one to open the next, so you build up rather than skip around.</p></div>
+        </div>
+        <div class="step">
+          <div class="stepnum">5</div>
+          <div><h3>Read the explanation, then move on</h3><p>Whether you got it right or wrong, read why the other options don't work — that's where most of the learning happens. Switch on Test Mode in the sidebar if you want feedback held back until you submit the whole section, like the real exam.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-label">Questions</div>
+      <h2 class="sec-title">Frequently asked</h2>
+
+      <details open>
+        <summary>Is JEE Prep really free?</summary>
+        <p>Yes. Every chapter, question, and category currently available is free to use.</p>
+      </details>
+      <details>
+        <summary>Do the questions match the real JEE Main syllabus?</summary>
+        <p>Yes — the Syllabus tab inside the app lists the full official JEE Main Physics, Chemistry and Mathematics syllabus, and questions are written to match it chapter by chapter.</p>
+      </details>
+      <details>
+        <summary>Can I retake a section after finishing it?</summary>
+        <p>Yes. Sections only lock going forward — once you've completed one, you can reopen and retake it any time.</p>
+      </details>
+      <details>
+        <summary>I found a mistake or have a suggestion — who do I tell?</summary>
+        <p>Email <a href="mailto:kasi47@gmail.com">kasi47@gmail.com</a> — feedback goes straight to the person building the app.</p>
+      </details>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div>JEE Prep — a product by <strong>Urani Software</strong></div>
+      <div class="fine">Feedback: <a href="mailto:kasi47@gmail.com">kasi47@gmail.com</a></div>
+    </div>
+  </footer>
+
+</body>
 </html>
